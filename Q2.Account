@@ -1,0 +1,78 @@
+import java.util.*;
+class Account{
+    int accNo;
+    String name;
+    int phoneNo;
+    float balAmt=0;
+    Scanner sc=new Scanner(System.in);
+    void getDetails(){
+        System.out.println("Enter the following details:-");
+        System.out.println("Enter the account number:-");
+        accNo=sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter the account holder's name:-");
+        name=sc.nextLine();
+        System.out.println("Enter the phone number:-");
+        phoneNo=sc.nextInt();
+        System.out.println("Current balance in the account is:-"+balAmt);
+    }
+    void deposit(){
+        float deposit;
+        System.out.println("Enter the amount you want to deposit:-");
+        deposit=sc.nextFloat();
+        balAmt+=deposit;
+        System.out.println("Current balance is:-"+balAmt);
+    }
+    void withdraw(){
+        float withdraw;
+        System.out.println("Enter the amount you want to withdraw:-");
+        withdraw=sc.nextFloat();
+        if(withdraw<=balAmt) {
+            balAmt -= withdraw;
+            System.out.println("Current Balance is:-"+balAmt);
+        }
+        else{
+            System.out.println("Your account does not sufficient balance");
+        }
+    }
+    void printDetails(){
+        System.out.println("The details of the user are:-");
+        System.out.println("The Account Number is:-"+accNo);
+        System.out.println("The Account Holder's Name is:-"+name);
+        System.out.println("The Phone Number of the Account holder is:-"+phoneNo);
+        System.out.println("The current balance is:-"+balAmt);
+    }
+    public static void main(String args[]){
+        Account a1=new Account();
+        Scanner sc=new Scanner(System.in);
+        while(true){
+            System.out.println("1.Enter user details");
+            System.out.println("2.Deposit Money in the account");
+            System.out.println("3.Withdraw Money from the account");
+            System.out.println("4.Print User details");
+            System.out.println("5.EXIT");
+            System.out.println("Enter your choice:-");
+            int ch=sc.nextInt();
+            switch(ch){
+                case 1:
+                    a1.getDetails();
+                    break;
+                case 2:
+                    a1.deposit();
+                    break;
+                case 3:
+                    a1.withdraw();
+                    break;
+                case 4:
+                    a1.printDetails();
+                    break;
+                case 5:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+
+        }
+    }
+}
