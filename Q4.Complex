@@ -1,0 +1,50 @@
+class complex {
+    int real;
+    int imag;
+    complex() {
+    }
+    complex(int tempReal,int tempImag){
+        real=tempReal;
+        imag=tempImag;
+    }
+complex add(complex c1,complex c2){
+complex temp=new complex();
+temp.real=c1.real+c2.real;
+temp.imag=c1.imag+c2.imag;
+return temp;
+}
+complex subt(complex c1,complex c2){
+complex temp=new complex();
+temp.real=c1.real-c2.real;
+temp.imag=c1.imag-c2.imag;
+return temp;
+}
+complex mult(complex c1,complex c2){
+complex temp=new complex();
+temp.real=(c1.real*c2.real)-(c1.imag*c2.imag);
+temp.imag=(c1.real*c2.imag)+(c2.real*c1.imag);
+return temp;
+}
+void printComplexNumber()
+{
+System.out.println("Complex number:"+real+"+"+imag+"i");
+}
+}
+class comp{
+public static void main(String args[]){
+complex c1=new complex(3,4);
+c1.printComplexNumber();
+complex c2=new complex(2,6);
+c2.printComplexNumber();
+complex c3=new complex();
+c3=c3.add(c1,c2);
+    System.out.println("Sum of");
+c3.printComplexNumber();
+c3=c3.subt(c1,c2);
+    System.out.println("Difference of");
+c3.printComplexNumber();
+c3=c3.mult(c1,c2);
+    System.out.println("Multiplication of");
+c3.printComplexNumber();
+}
+}
