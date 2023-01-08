@@ -1,0 +1,80 @@
+import java.util.*;
+class matrix{
+    int array[][];
+    int row;
+    int column;
+    matrix(int row,int column){
+        this.row = row;
+        this.column = column;
+        this.array = new int[row][column];
+    }
+    Scanner sc = new Scanner(System.in);
+     void getinput(){
+            for(int i=0;i<row;i++){
+                for(int j=0;j<column;j++){
+                    array[i][j] = sc.nextInt();
+                }
+            }
+    }
+
+    void matrixmult(matrix m1,matrix m2){
+        if(m1.column != m2.row){
+            System.out.println("The two matrices cannot be Multiplied");    
+        }
+        else{
+            for(int i=0;i<m1.row;i++){
+                    for(int j=0;j<m2.column;j++){
+                        for(int k=0;k<m1.column;k++){
+                            array[i][j] += m1.array[i][k] * m2.array[k][j];
+                        }
+                    }
+            }
+        }
+    }
+
+     void printmatrix(){
+        for(int i=0;i<row;i++){
+            for(int j=0;j<column;j++){
+                System.out.print(array[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int row,column;
+        System.out.println("For Matrix 1");
+        System.out.print("Enter the no of rows:   ");
+        row = sc.nextInt();
+        System.out.print("Enter the no of columns:   ");
+        column = sc.nextInt();
+        matrix m1 = new matrix(row,column);
+
+        System.out.println("For Matrix 2");
+        System.out.print("Enter the no of rows:   ");
+        row = sc.nextInt();
+        System.out.print("Enter the no of columns:   ");
+        column = sc.nextInt();
+        matrix m2 = new matrix(row,column);
+
+
+        matrix m3 = new matrix(m1.row,m2.column);
+
+        System.out.println("Enter the elements of matrix 1");
+        m1.getinput();
+
+        System.out.println("Enter the elemnets of matrix 2");
+        m2.getinput();
+
+        m3.matrixmult(m1,m2);
+        System.out.println("The Matrix 1 is:");
+        m1.printmatrix();
+
+        System.out.println("The Matrix 2 is:");
+        m2.printmatrix();
+
+        System.out.println("The Multiplication of two matrices is:");
+        m3.printmatrix();
+    }
+}
