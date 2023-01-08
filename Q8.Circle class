@@ -1,0 +1,46 @@
+import java.util.*;
+class circle{
+    double rad;
+    double area;
+    circle(double r){
+        this.rad=r;
+    }
+    double area(){
+        area=(Math.PI)*rad*rad;
+        return area;
+    }
+}
+class sector extends circle{
+    double angle;
+    double area;
+    sector(double r,double angle){
+        super(r);
+        this.angle=angle;
+    }
+    double area(){
+        area=(0.5)*rad*rad*angle;
+        return area;
+    }
+}
+class segment extends circle{
+    double length;
+    double area;
+    segment(double r,double l){
+        super(r);
+        this.length=l;
+    }
+    double area(){
+        area=(rad*rad*((rad-length/rad)-(rad-length)))*Math.pow((2*rad*length-length*length),(0.5));
+    return area;
+}
+}
+class MAIN{
+public static void main(String args[]){
+circle c=new circle(5);
+sector st=new sector(5,30);
+segment sg=new segment(5,3);
+System.out.println("The area of circle is:"+c.area());
+System.out.println("The area of the segment is:"+sg.area());
+System.out.println("The area of the sector is:"+st.area());
+}
+}
